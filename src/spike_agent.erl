@@ -84,10 +84,10 @@ init([CS, Timeout]) ->
     case net_adm:ping( CS ) of
         pong ->
             ?LOG_INFO("CS Node AGREE ~p \n", [CS]),
-            {ok, #state{cs_node={pong, CS}}, Timeout};
+            {ok, #state{cs_node={pong, CS}, timeout=Timeout}, Timeout};
         _    ->
             ?LOG_INFO("CS Node UNREACHABLE ~p\n", [CS]),
-            {ok, #state{cs_node={pang, CS}}, Timeout}
+            {ok, #state{cs_node={pang, CS}, timeout=Timeout}, Timeout}
     end.         
 
 %%--------------------------------------------------------------------
